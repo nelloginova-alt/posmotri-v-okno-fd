@@ -108,7 +108,7 @@ html {
 }
 
 .search-form__textfield {
-  width: 225px;
+  min-width: 225px;
   font-family: inherit;
   font-weight: 400;
   font-style: normal;
@@ -153,16 +153,22 @@ html {
   opacity: 0;
 }
 
-.search-form__checkbox:checked + .search-form__pseudo-checkbox::after {
-  opacity: 1;
-}
-
 .search-form__label:hover .search-form__label-text {
   text-decoration: underline;
   text-underline-offset: 1px;
   text-decoration-thickness: 1px;
   text-decoration-skip-ink: none;
   cursor: pointer;
+}
+
+.search-form__checkbox:checked
+  + .search-form__pseudo-checkbox
+  + .search-form__label-text {
+  text-decoration: none;
+}
+
+.search-form__checkbox:checked + .search-form__pseudo-checkbox::after {
+  opacity: 1;
 }
 
 .search-form__label:has(.search-form__checkbox:focus-visible) {
@@ -179,6 +185,7 @@ html {
   border: 1px solid #fff;
   background-color: transparent;
   color: #fff;
+  appearance: none;
 }
 
 .button:hover {
@@ -187,23 +194,23 @@ html {
   cursor: pointer;
 }
 
-.button:active {
-  background-color: rgb(84 80 80);
-  text-decoration: none;
-}
-
 .search-form__submit-button {
   padding: 6px 73.5px;
   align-self: flex-end;
 }
 
-.search-form__submit-button:focus {
+.button:focus {
   outline: none;
 }
 
-.search-form__submit-button:focus-visible {
+.button:focus-visible {
   outline: 1px solid #fff;
   outline-offset: 2px;
+}
+
+.button:active {
+  background-color: rgb(84 80 80);
+  text-decoration: none;
 }
 
 .content__details {
@@ -231,7 +238,7 @@ html {
   flex-direction: column;
   row-gap: 30px;
   height: 298px;
-  overflow-y: scroll;
+  overflow: auto;
 }
 
 .content__list {
@@ -245,6 +252,8 @@ html {
 }
 
 .content__video-card-description-container {
+  width: 196px;
+  height: 103px;
   flex-grow: 1;
 }
 
@@ -255,10 +264,6 @@ html {
 }
 
 .content__card-link_current {
-  background-color: transparent;
-}
-
-.content__card-link:active {
   background-color: rgb(84 80 80);
 }
 
@@ -279,6 +284,10 @@ html {
   outline-offset: 2px;
 }
 
+.content__card-link:active {
+  background-color: rgb(84 80 80);
+}
+
 .content__video-card {
   display: flex;
   justify-content: flex-start;
@@ -290,9 +299,9 @@ html {
   text-transform: uppercase;
   letter-spacing: 0;
   padding-bottom: 6px;
-  text-overflow: ellipsis;
-  overflow: hidden;
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   line-height: 100%;
 }
 
@@ -307,7 +316,7 @@ html {
   -webkit-line-clamp: 4;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-height: 4em;
+  height: 4em;
   white-space: nowrap;
 }
 
@@ -327,15 +336,6 @@ html {
 
 .more-button-template {
   padding: 0 3px;
-}
-
-.more-button:focus {
-  outline: none;
-}
-
-.more-button:focus-visible {
-  outline: 1px solid #fff;
-  outline-offset: 2px;
 }
 
 .custom-scrollbar::-webkit-scrollbar {
